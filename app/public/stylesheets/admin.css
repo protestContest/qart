@@ -1,0 +1,9 @@
+label {
+    display: block;
+    width: 300px;
+    clear: right;
+}
+
+label input, label textarea {
+    float: right;
+}
