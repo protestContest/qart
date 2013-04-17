@@ -4,7 +4,7 @@
 
 <h1>Add New Art Piece</h1>
 
-<form action="/art" method="post">
+<form action="/art/<%= piece.id %>" method="post">
     <input type="hidden" name="_method" value="put">
     <label>Title
         <input type="text" name="title" value="<%= piece.title %>">
@@ -19,6 +19,11 @@
         <textarea rows="4" cols="26" name="about_artist"><%= piece.artist.about %></textarea>
     </label>
     <button>Update piece</button>
+</form>
+
+<form action="/art/<%= piece.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete piece</button>
 </form>
 
 </html>

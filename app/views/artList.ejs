@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<ul>
+<% pieces.forEach(function(piece) { %>
+    <li><a href="/art/<%= piece.id %>"><%= piece.title %></a>
+        <a href="/art/<%= piece.id %>/edit">Edit</a>
+<% }) %>
+</ul>
+
+</html>
