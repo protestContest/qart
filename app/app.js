@@ -30,6 +30,10 @@ if ('development' == app.get('env')) {
     mongoURL = 'mongodb://localhost/art'
 }
 
+if ('production' == app.get('env')) {
+    mongoURL = process.env.MONGO_URL
+}
+
 app.get('/', routes.index);
 app.get('/art', art.list);
 app.get('/art/new', art.createForm);
