@@ -4,10 +4,10 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+    , routes = require('./routes')
+    , art = require('./routes/art')
+    , http = require('http')
+    , path = require('path');
 
 var app = express();
 
@@ -24,12 +24,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/art/new', art.createForm);
+app.get('/art/:id/edit', art.editForm);
+app.get('/art/:id', art.view);
+app.put('/art/:id', art.update);
+app.post('/art', art.create);
+app.delete('/art/:id', art.destroy);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });
